@@ -19,11 +19,11 @@ export default function Header() {
             </div>
             <div>
                 <ul className="flex space-x-10" >
-                    <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/") && "text-black border-b-red-500"}`} onClick={()=>navigate("/")} >Home</li>
+                    <li className={`hover:border-b-red-300 hover:text-gray-300 transition duration-200 ease-in-out cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b ${pathMatchRoute("/") && "text-black border-b-red-500"}`} onClick={()=>navigate("/")} >Home</li>
 
-                    <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/offers") && "text-black border-b-red-500"}`} onClick={()=>navigate("/offers")} >Offers</li>
+                    <li className={`hover:border-b-red-300 hover:text-gray-300 transition duration-200 ease-in-out cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b ${pathMatchRoute("/offers") && "text-black border-b-red-500"}`} onClick={()=>navigate("/offers")} >Offers</li>
 
-                    <li className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${pathMatchRoute("/sign-in") && "text-black border-b-red-500"}`} onClick={()=>navigate("/sign-in")} >Sign In</li>
+                    <li className={`hover:border-b-red-300 hover:text-gray-300 transition duration-200 ease-in-out cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b ${pathMatchRoute("/sign-in") && "text-black border-b-red-500"}`} onClick={()=>navigate("/sign-in")} >Sign In</li>
                 </ul>
             </div>
         </header>
