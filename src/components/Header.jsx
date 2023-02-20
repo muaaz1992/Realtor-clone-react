@@ -27,7 +27,7 @@ export default function Header() {
      }
 
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-50" >
+    <div className="bg-white border-b shadow-sm sticky top-0 z-40" >
         <header className="flex items-center justify-between max-w-6xl mx-auto px-3" >
             <div>
                 <img src="https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg" alt="logo " className="cursor-pointer h-5" onClick={()=>navigate("/")} />
