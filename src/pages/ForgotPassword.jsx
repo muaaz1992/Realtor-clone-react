@@ -30,6 +30,7 @@ export default function ForgotPassword() {
 
             <input 
             className="
+            hover:border-red-400
             bg-white
             border-gray-400
             ease-in-out
@@ -54,7 +55,7 @@ export default function ForgotPassword() {
               </div>
 
               <p>
-                <Link to="/sign-in" className="duration-200 ease-in-out hover:text-blue-800 text-blue-600 transition">Sign in Instead</Link>
+              <Link to="/sign-in" className="duration-200 ease-in-out hover:text-blue-800 text-blue-600 transition">Sign in Instead</Link>
               </p>
             </div>
 

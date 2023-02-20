@@ -41,6 +41,7 @@ export default function SignIn() {
           <form>
             <input 
             className="
+            hover:border-red-400
             bg-white
             border-gray-400
             ease-in-out
@@ -60,6 +61,7 @@ export default function SignIn() {
             <div className="mb-6 relative" >
             <input 
             className="
+            hover:border-red-400
             bg-white
             border-gray-400
             ease-in-out
