@@ -46,7 +46,7 @@ export default function SignIn() {
       <h1 className="font-bold mt-6 text-3xl text-center">Sign In</h1>
 
       <div className="flex flex-wrap items-center justify-center max-w-6xl mx-auto px-6 py-12">
-        <div className="lg:mb-12 lg:w-[50%] md:mb-6 md:w-[50%] sm:w[67%]">
+        <div className="lg:mb-12 lg:w-[40%] md:mb-6 md:w-[40%] sm:w[67%] w-full">
           <img
             src="https://images.unsplash.com/photo-1572782992110-afab5a6ef870?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
             alt="key"
@@ -54,7 +54,7 @@ export default function SignIn() {
           />
         </div>
 
-        <div className="lg:ml-20 lg:w[40%] md:w-[40%] ml-6 mt-6 sm:w[67%] w-full">
+        <div className="lg:ml-20 lg:w[40%] md:w-[40%] ml-6 mt-6 sm:w[67%]">
           <form onSubmit={onSubmit}>
             <input
               className="
