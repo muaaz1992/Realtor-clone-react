@@ -179,6 +179,7 @@ export default function CreateListing() {
       imgUrls,
       geolocation,
       timeStamp: serverTimestamp(),
+      userRef: auth.currentUser.uid,
     };
     delete formDataCopy.images;
     !formDataCopy.offer && delete formDataCopy.discounted;
@@ -584,8 +585,8 @@ export default function CreateListing() {
                   type="number"
                   value={discounted}
                   onChange={onChange}
-                  id={discounted}
-                  min="0"
+                  id="discounted"
+                  min="1"
                   max="100000"
                   required={offer}
                   className="
