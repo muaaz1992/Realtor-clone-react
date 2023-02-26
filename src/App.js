@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Offers from "./pages/Offers.jsx";
@@ -8,9 +8,9 @@ import SignUp from "./pages/SignUp.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Header from "./components/Header.jsx";
 import { ToastContainer } from "react-toastify";
-import"react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 import CreateListing from "./pages/CreateListing.jsx";
-
+import EditListing from "./pages/EditListing.jsx";
 
 function App() {
   return (
@@ -22,14 +22,18 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/offers" element={<Offers />} />
 
-          <Route path="/create-listing" element={<PrivateRoute />} >
-          <Route path="/create-listing" element={<CreateListing />} />
+          <Route path="/create-listing" element={<PrivateRoute />}>
+            <Route path="/create-listing" element={<CreateListing />} />
           </Route>
 
-          <Route path="/profile" element={<PrivateRoute />} >
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/edit-listing" element={<PrivateRoute />}>
+            <Route path="/edit-listing/:listingId" element={<EditListing />} />
           </Route>
-          
+
+          <Route path="/profile" element={<PrivateRoute />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>
@@ -45,7 +49,7 @@ function App() {
         draggable
         pauseOnHover
         theme="dark"
-      />    
+      />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import {
   collection,
@@ -70,7 +71,7 @@ export default function Profile() {
       const querySnap = await getDocs(q);
       let listings = [];
       querySnap.forEach((doc) => {
-        return listings.push({
+        return listings?.push({
           id: doc.id,
           data: doc.data(),
         });
