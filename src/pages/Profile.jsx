@@ -71,13 +71,15 @@ export default function Profile() {
       const querySnap = await getDocs(q);
       let listings = [];
       querySnap.forEach((doc) => {
-        return listings?.push({
+        return listings.push({
           id: doc.id,
           data: doc.data(),
         });
       });
       setListings(listings);
+
       setLoading(false);
+      console.log(listings);
     }
     fetchUserListings();
   }, [auth.currentUser.uid]);
@@ -151,12 +153,16 @@ export default function Profile() {
           </button>
         </div>
       </section>
+      <h2 className="font-semibold mt-6 text-2xl text-center">My Listings</h2>
+
       <div className="max-w-6x mt-6 mx-auto px-3">
+        {!loading && listings.length >= 0 && (
+          <>
+            <p>There are no listings created yet</p>
+          </>
+        )}
         {!loading && listings.length > 0 && (
           <>
-            <h2 className="font-semibold mt-6 text-2xl text-center">
-              My Listings
-            </h2>
             <ul>
               {listings.map((listing) => (
                 <ListingItem
