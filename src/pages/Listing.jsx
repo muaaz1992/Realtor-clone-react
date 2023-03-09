@@ -29,11 +29,10 @@ export default function Listing() {
       if (docSnap.exists()) {
         setListing(docSnap.data());
         setLoading(false);
-        console.log(listing);
       }
     }
     fetchListing();
-  }, [params.listingId]);
+  }, [params.listingId, listing]);
 
   if (loading) {
     return <Spinner />;
@@ -44,7 +43,7 @@ export default function Listing() {
       <img
         src={listing.imgUrls[0]}
         alt="Images"
-        className="h-[300px] object-cover overflow-hidden w-full"
+        className="h-[400px] object-cover overflow-hidden w-full"
       />
       <div
         className="bg-white border-2 border-gray-400 cursor-pointer fixed flex h-12 items-center justify-center ml ml-6 right-[3%] rounded-full top-[10%] w-12 z-10"

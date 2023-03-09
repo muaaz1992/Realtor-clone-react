@@ -65,8 +65,8 @@ export default function Profile() {
       const listingRef = collection(db, "listings");
       const q = query(
         listingRef,
-        where("userRef", "==", auth.currentUser.uid),
-        orderBy("timestamp", "desc")
+        // where("userRef", "==", auth.currentUser.uid),
+        orderBy("timeStamp", "desc")
       );
       const querySnap = await getDocs(q);
       let listings = [];
