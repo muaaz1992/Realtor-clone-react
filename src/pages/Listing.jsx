@@ -14,6 +14,15 @@ import {
 import { getAuth } from "firebase/auth";
 import Contact from "../components/Contact";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, {
+  EffectFade,
+  Autoplay,
+  Navigation,
+  Pagination,
+} from "swiper";
+import "swiper/css/bundle";
+import "swiper/css";
 
 export default function Listing() {
   const auth = getAuth();
@@ -22,6 +31,9 @@ export default function Listing() {
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
   const [contactLandlord, setContactLandlord] = useState(false);
+
+  SwiperCore.use([Autoplay, Navigation, Pagination]);
+
   useEffect(() => {
     async function fetchListing() {
       const docRef = doc(db, "listings", params.listingId);
@@ -40,11 +52,31 @@ export default function Listing() {
 
   return (
     <main>
-      <img
+      <Swiper
+        slidesPerView={1}
+        navigation
+        pagination={{ type: "progressbar" }}
+        effect="fade"
+        module={[EffectFade]}
+        autoplay={{ delay: 3000 }}
+      >
+        {listing.imgUrls.map(({ url, index }) => (
+          <SwiperSlide key={index}>
+            <div
+              style={{
+                background: `url(${listing.imgUrls}) center, no-repeat`,
+                backgroundSize: "cover",
+              }}
+              className="h-[300px] overflow-hidden w-full"
+            ></div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {/* <img
         src={listing.imgUrls[0]}
         alt="Images"
         className="h-[400px] object-cover overflow-hidden w-full"
-      />
+      /> */}
       <div
         className="bg-white border-2 border-gray-400 cursor-pointer fixed flex h-12 items-center justify-center ml ml-6 right-[3%] rounded-full top-[10%] w-12 z-10"
         onClick={() => {

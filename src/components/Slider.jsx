@@ -36,7 +36,6 @@ export default function Slider() {
       });
       setListings(listings);
       setLoading(false);
-      console.log(listings);
     }
     fetchListings();
   }, []);
@@ -66,7 +65,7 @@ export default function Slider() {
             >
               <div
                 style={{
-                  background: `url(${data.imgUrls}) center, no-repeat`,
+                  background: `url(${data.imgUrls[0]}) center, no-repeat`,
                   backgroundSize: "cover",
                 }}
                 className="h-[300px] overflow-hidden relative w-full"
@@ -75,7 +74,7 @@ export default function Slider() {
                 {data.name}
               </p>
               <p className="absolute bg-[#e63946] bottom-3 font-semibold left-1 max-w-90% opacity-90 p-2 rounded-tr-3xl shadow-lg text-[#f1faee]">
-                $
+                ${" "}
                 {data.offer
                   ? data.discounted
                       .toString()

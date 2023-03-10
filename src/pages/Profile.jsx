@@ -65,7 +65,7 @@ export default function Profile() {
       const listingRef = collection(db, "listings");
       const q = query(
         listingRef,
-        // where("userRef", "==", auth.currentUser.uid),
+        where("userRef", "==", auth.currentUser.uid),
         orderBy("timeStamp", "desc")
       );
       const querySnap = await getDocs(q);
@@ -156,14 +156,14 @@ export default function Profile() {
       <h2 className="font-semibold mt-6 text-2xl text-center">My Listings</h2>
 
       <div className="max-w-6x mt-6 mx-auto px-3">
-        {!loading && listings.length >= 0 && (
+        {!loading && listings.length < 0 && (
           <>
             <p>There are no listings created yet</p>
           </>
         )}
         {!loading && listings.length > 0 && (
           <>
-            <ul>
+            <ul className="items-center justify-center lg:grid-cols-3 max-w-6xl mb-6 mt-6 mx-auto sm:grid sm:grid-cols-2 xl:grid-cols-4">
               {listings.map((listing) => (
                 <ListingItem
                   key={listing.id}
