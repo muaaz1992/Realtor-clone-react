@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn, MdEdit } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 
-export default function ListingItem({ listing, id }) {
+export default function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
     <li className="bg-white duration-150 ease-in-out flex flex-col hover:shadow-xl items-center justify-between m-[10px] overflow-hidden relative rounded-md shadow-md transition-shadow">
       <Link className="content" to={`/category/${listing.type}/${id}`}>
@@ -26,7 +27,7 @@ export default function ListingItem({ listing, id }) {
             </p>
           </div>
         </div>
-        <p className="font-semibold m-0 text-xlg truncate">{listing.name}</p>
+        <p className="font-semibold m-0 text-xlg">{listing.name}</p>
         <p className="font-semibold mt-2 text-[#457b9d]">
           ${" "}
           {listing.offer
@@ -49,6 +50,18 @@ export default function ListingItem({ listing, id }) {
           </div>
         </div>
       </Link>
+      {onDelete && (
+        <FaTrash
+          className="absolute bottom-2 cursor-pointer h-[14px] right-2 text-red-500"
+          onClick={() => onDelete(listing.id)}
+        />
+      )}
+      {onEdit && (
+        <MdEdit
+          className="absolute bottom-2 cursor-pointer h-4 right-7"
+          onClick={() => onEdit(listing.id)}
+        />
+      )}
     </li>
   );
 }
