@@ -172,9 +172,9 @@ export default function Profile() {
       <h2 className="font-semibold mt-6 text-2xl text-center">My Listings</h2>
 
       <div className="max-w-6x mt-6 mx-auto px-3">
-        {!loading && listings.length < 0 && (
+        {!loading && listings.length === 0 && (
           <>
-            <p>There are no listings created yet</p>
+            <p className="mt-6 text-left">There are no listings created yet</p>
           </>
         )}
         {!loading && listings.length > 0 && (

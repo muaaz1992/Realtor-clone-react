@@ -546,7 +546,7 @@ export default function CreateListing() {
                 onChange={onChange}
                 id="price"
                 min="1"
-                max="100000"
+                max="10000000"
                 required
                 className="
                             hover:border-red-400
@@ -587,7 +587,7 @@ export default function CreateListing() {
                   onChange={onChange}
                   id="discounted"
                   min="1"
-                  max="100000"
+                  max="10000000"
                   required={offer}
                   className="
                             hover:border-red-400
