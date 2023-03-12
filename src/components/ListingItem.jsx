@@ -5,7 +5,7 @@ import { FaTrash } from "react-icons/fa";
 
 export default function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
-    <li className="bg-white duration-150 ease-in-out flex flex-col hover:shadow-xl items-center justify-between m-[10px] overflow-hidden relative rounded-md shadow-md transition-shadow">
+    <li className="bg-white duration-150 ease-in-out flex flex-col hover:shadow-xl justify-between m-[10px] overflow-hidden relative rounded-md shadow-md transition-shadow">
       <Link className="content" to={`/category/${listing.type}/${id}`}>
         <img
           src={listing.imgUrls[0]}
@@ -19,18 +19,18 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
         >
           {listing.timeStamp?.toDate()}
         </Moment>
-        <div className="items-left mt-[10px] w-full">
-          <div className="flex items-left space-x-1">
+        <div className="1 mt-[10px] w-full">
+          <div className="flex space-x-1">
             <MdLocationOn className="h-4 text-green-600 w-4" />
             <p className="font-semibold mb-[2px] text-gray-600 text-sm truncate">
               {listing.address}
             </p>
           </div>
         </div>
-        <p className="font-semibold text-left text-xlg truncate">
+        <p className="font-semibold ml-1 text-left text-xlg truncate">
           {listing.name}
         </p>
-        <p className="font-semibold mt-2 text-[#457b9d]">
+        <p className="font-semibold ml-1 mt-2 text-[#457b9d]">
           ${" "}
           {listing.offer
             ? listing.discounted
@@ -40,7 +40,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           {listing.type === "rent" ? " / month" : ""}
         </p>
         <div className="flex items-center mb-[10px] mt-[10px] space-x-3">
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center ml-1 space-x-1">
             <p className="font-bold text-xs">
               {listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}{" "}
             </p>

@@ -8,22 +8,24 @@ import {
   where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ListingItem from "../components/ListingItem";
 import Spinner from "../components/Spinner";
 import { db } from "../firebase";
 
-export default function Offers() {
+export default function Category() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lastFetchListing, setLastFetchListing] = useState(null);
+  const params = useParams();
   useEffect(() => {
     async function fetchListings() {
       try {
         const listingsRef = collection(db, "listings");
         const q = query(
           listingsRef,
-          where("offer", "==", true),
+          where("type", "==", params.categoryName),
           orderBy("timeStamp", "desc"),
           limit(8)
         );
@@ -44,14 +46,14 @@ export default function Offers() {
       }
     }
     fetchListings();
-  }, []);
+  }, [params.categoryName]);
 
   async function onFetchMoreListings() {
     try {
       const listingsRef = collection(db, "listings");
       const q = query(
         listingsRef,
-        where("offer", "==", true),
+        where("offer", "==", params.categoryName),
         orderBy("timeStamp", "desc"),
         startAfter(lastFetchListing),
 
@@ -76,7 +78,9 @@ export default function Offers() {
 
   return (
     <div className="max-w-6xl mx-auto px-3">
-      <h1 className="font-bold mb-6 mt-6 text-3xl text-center">Offers</h1>
+      <h1 className="font-bold mb-6 mt-6 text-3xl text-center">
+        {params.categoryName === "rent" ? "Places for rent" : "Places for sale"}
+      </h1>
       {loading ? (
         <Spinner />
       ) : listings && listings.length > 0 ? (
