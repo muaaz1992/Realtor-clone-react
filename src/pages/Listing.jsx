@@ -41,10 +41,16 @@ export default function Listing() {
       if (docSnap.exists()) {
         setListing(docSnap.data());
         setLoading(false);
+        console.log(listing);
       }
     }
     fetchListing();
-  }, [params.listingId, listing]);
+    console.log(listing);
+  }, [params.listingId]);
+
+  let percentDiscount =
+    ((+listing.price - +listing.discounted) / listing.price) * 100;
+  let reducedPercentDiscount = percentDiscount.toFixed(1);
 
   if (loading) {
     return <Spinner />;
@@ -60,20 +66,20 @@ export default function Listing() {
         module={[EffectFade]}
         autoplay={{ delay: 3000 }}
       >
-        {listing.imgUrls.map(({ url, index }) => (
+        {listing.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
-                background: `url(${listing.imgUrls}) center, no-repeat`,
+                background: `url(${listing.imgUrls[index]}) center, no-repeat`,
                 backgroundSize: "cover",
               }}
-              className="h-[300px] overflow-hidden w-full"
+              className="h-[300px] object-cover overflow-hidden w-full"
             ></div>
           </SwiperSlide>
         ))}
       </Swiper>
       {/* <img
-        src={listing.imgUrls[0]}
+        src={listing.imgUrls[1]}
         alt="Images"
         className="h-[400px] object-cover overflow-hidden w-full"
       /> */}
@@ -114,15 +120,14 @@ export default function Listing() {
             <p className="bg-red-800 font-semibold max-w-[200px] p-1 px-12 rounded-md shadow-md text-center text-white w-full">
               {listing.type === "rent" ? "Rent" : "Sale"}
             </p>
-            <p>
+
+            <div className="flex items-start justify-center space-x-4 w-[75%]">
               {listing.offer && (
-                <p className="bg-green-800 font-semibold max-w-[200px] p-1 px-12 rounded-md shadow-md text-center text-white w-full">
-                  {((+listing.price - +listing.discounted) / listing.price) *
-                    100}
-                  % discount
+                <p className="bg-green-800 font-semibold max-w-[200px] p-1 px-6 rounded-md shadow-md text-center text-white w-full">
+                  {reducedPercentDiscount}% discount
                 </p>
               )}
-            </p>
+            </div>
           </div>
 
           <p className="mb-3 mt-3">
