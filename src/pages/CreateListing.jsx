@@ -423,7 +423,7 @@ export default function CreateListing() {
                 value={latitude}
                 onChange={onChange}
                 min="-90.00000"
-                step="0.01"
+                step="0.000001"
                 max="90.000000"
                 className="
                     hover:border-red-400
@@ -453,7 +453,7 @@ export default function CreateListing() {
                 value={longitude}
                 onChange={onChange}
                 min="-180.000000"
-                step="0.01"
+                step="0.000001"
                 max="180.0000000"
                 className="
                     hover:border-red-400
